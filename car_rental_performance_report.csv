@@ -1,0 +1,28 @@
+Executive Summary,
+Objective,"To validate the Car Rental Marketplace performance under the load of 50,000 transactions per hour and to identify the breaking point of the server."
+Load Test Result,
+Total Duration,1 hour
+Label,# Samples,Average (ms),Median (ms),90% Line (ms),95% Line (ms),99% Line (ms),Min (ms),Max (ms),Error %,Throughput,KB/sec
+01_HomePage,9868,672,573,1177,1297,1904,290,6243,0.00%,2.6,27.2
+02_Booking,9866,404,290,927,959,1326,284,14944,0.00%,2.6,10.6
+03_SearchCars,9866,400,291,925,955,1300,283,5737,0.00%,2.6,10.6
+04_Payment,9863,409,292,931,963,1298,284,12049,0.00%,2.6,10.6
+05_UserProfile,9863,403,291,926,964,1302,284,23931,0.00%,2.6,10.6
+TOTAL,49326,458,292,935,993,1543,283,23931,0.00%,13,69.6
+Observations,
+,No errors encountered during load testing
+,Maximum response time is 23931 milliseconds
+,Minimum response time is 283 milliseconds
+,99 percentile is less than 1543 milliseconds
+Stress Testing,
+,"In this test, more than 100 users have been injected concurrently at a regular interval of 30 seconds."
+,First internal server error (Code 500) occurred at 125 concurrent users.
+,"Eventually, all transactions started failing."
+Conclusion,
+,"Server successfully handled 50,000 transactions per hour without errors."
+,Stress test revealed failure beyond 125 concurrent users.
+,System scaling is required to support higher loads.
+Next Steps,
+,"Monitor CPU, Memory, Network, and Disk utilization."
+,Optimize database queries and caching.
+,Consider infrastructure scaling to support more concurrent users.
